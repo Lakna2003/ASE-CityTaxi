@@ -27,6 +27,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware' => 'auth'], function () {
 
+    Route::get('/driver-register', [DriverController::class, 'index'])->name('driver.register');
+    Route::post('/driver-save', [DriverController::class, 'saveDriver'])->name('driver.save');
+    Route::post('/driver-documents/save', [DriverController::class, 'saveDriverDocuments'])->name('driver.saveDocuments');
+    Route::get('/driver-register-get', [DriverController::class, 'isRegisteredDriver'])->name('check.driver.registered');
+    Route::get('/driver-register-status-check', [DriverController::class, 'checkDriverProfileStatus'])->name('check.driver.profile.status');
     
 });
 
