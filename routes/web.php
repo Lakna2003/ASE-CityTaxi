@@ -32,7 +32,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/driver-documents/save', [DriverController::class, 'saveDriverDocuments'])->name('driver.saveDocuments');
     Route::get('/driver-register-get', [DriverController::class, 'isRegisteredDriver'])->name('check.driver.registered');
     Route::get('/driver-register-status-check', [DriverController::class, 'checkDriverProfileStatus'])->name('check.driver.profile.status');
-    
+    Route::match(['get', 'post'], '/find-nearby-drivers', [BookingController::class, 'findNearbyDrivers'])->name('find.nearby.drivers');
+
+
+    Route::get('/booking', [BookingController::class, 'index'])->name('booking');
+
+    Route::get('/booking-success', [BookingController::class, 'bookingSuccess'])->name('booking.success');
+    Route::get('/booking/payment/{tripId}', [BookingController::class, 'bookingPayment'])->name('booking.payment');
+    Route::post('/booking/review', [BookingController::class, 'review'])->name('review');
 });
 
 //admin routes
