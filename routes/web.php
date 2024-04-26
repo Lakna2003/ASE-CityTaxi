@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/booking-success', [BookingController::class, 'bookingSuccess'])->name('booking.success');
     Route::get('/booking/payment/{tripId}', [BookingController::class, 'bookingPayment'])->name('booking.payment');
     Route::post('/booking/review', [BookingController::class, 'review'])->name('review');
+    Route::post('booking/cancel/{tripId}', [BookingController::class, 'cancelBooking'])->name('booking.cancel');
+
 });
 
 //admin routes
