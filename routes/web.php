@@ -42,6 +42,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/booking/review', [BookingController::class, 'review'])->name('review');
     Route::post('booking/cancel/{tripId}', [BookingController::class, 'cancelBooking'])->name('booking.cancel');
 
+    Route::get('trips/data', 'TripController@getTripsData')->name('trips.data');
+    Route::get('/driver/profile', [DriverController::class, 'driverProfile'])->name('driver.profile');
+    Route::get('/driver/profile/trips', [DriverController::class, 'driverProfileTrips'])->name('driver.profile.trips');
+    Route::get('/check-driving-status', [DriverController::class, 'checkDrivingStatus'])->name('check-driving-status');
+    Route::get('/check-driver-status', [DriverController::class, 'checkDriverStatus'])->name('check-driver-status');
+    Route::get('/get-passenger-info', [DriverController::class, 'getPassengerInfo'])->name('get-passenger-info');
+    Route::post('/complete-trip-driver', [DriverController::class, 'completeTripByDriver'])->name('complete_trip_driver');
+    Route::post('/update-driver-status', [DriverController::class, 'updateDriverStatus'])->name('update-driver-status');
+    Route::post('/update-driver-location', [DriverController::class, 'updateDriverLocation'])->name('update_driver_location');
 });
 
 //admin routes
